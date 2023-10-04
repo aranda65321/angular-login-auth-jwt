@@ -1,0 +1,29 @@
+<div class="div-content fadeInDown">
+  <div class="div-login text-center">
+    <div class="row">
+      <div class="col-md-12">
+        <label class="p-titleLogin">Iniciar sesion</label>
+      </div>
+    </div>
+    <div class="div-formulario">
+      <form [formGroup]="formLogin">
+        <div class="div_separatorInputs">
+          <input type="email" placeholder="Correo" formControlName="username" />
+          <label *ngIf="formLogin.get('username')?.touched && formLogin.get('username')?.hasError('required')"
+            class="label-error">El correo es requerido.</label>
+          <label *ngIf="formLogin.get('username')?.touched && formLogin.get('username')?.hasError('email')"
+            class="label-error">Ingrese un correo válido.</label>
+        </div>
+        <div class="div_separatorInputs">
+          <input type="password" placeholder="Contraseña" formControlName="password" />
+          <label *ngIf="formLogin.get('password')?.touched && formLogin.get('password')?.hasError('required')"
+            class="label-error">La contraseña es requerida.</label>
+        </div>
+      </form>
+    </div>
+    <input type="button" value="Iniciar" class="btn btn-primary btn-large btn-block" (click)="loginUser()" />
+    <label *ngIf="errorCredentials" class="label-error">Credenciales invalidas</label>
+    <a class="login-link" [routerLink]="['/register']">Registrar</a>
+  </div>
+
+</div>

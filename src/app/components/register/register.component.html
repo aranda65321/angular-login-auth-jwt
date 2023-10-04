@@ -1,0 +1,50 @@
+<div class="div-content fadeInDown">
+  <div class="div-login text-center">
+    <div class="row">
+      <div class="col-md-12">
+        <label class="p-titleLogin">Registro</label>
+      </div>
+    </div>
+    <div class="div-formulario">
+      <form [formGroup]="formLogin">
+        <div class="div_separatorInputs">
+          <input type="email" placeholder="Correo" formControlName="username" />
+          <label *ngIf="formLogin.get('username')?.touched && formLogin.get('username')?.hasError('required')"
+            class="label-error">El correo es requerido.</label>
+          <label *ngIf="formLogin.get('username')?.touched && formLogin.get('username')?.hasError('email')"
+            class="label-error">Ingrese un correo válido.</label>
+        </div>
+        <div class="div_separatorInputs">
+          <input type="password" placeholder="Contraseña" formControlName="password" />
+          <label *ngIf="formLogin.get('password')?.touched && formLogin.get('password')?.hasError('required')"
+            class="label-error">La contraseña es requerida.</label>
+        </div>
+        <div class="div_separatorInputs">
+          <input type="password" placeholder="Repetir Contraseña" formControlName="passwordRepeat" />
+          <label
+            *ngIf="formLogin.get('passwordRepeat')?.touched && formLogin.get('passwordRepeat')?.hasError('required')"
+            class="label-error">La contraseña es requerida.</label>
+          <label *ngIf="!validPassword()" class="label-error">Las contraseña son diferentes.</label>
+        </div>
+      </form>
+    </div>
+    <input type="button" value="Registrar" class="btn btn-primary btn-large btn-block" (click)="register()" />
+    <a class="login-link" [routerLink]="['/login']">Iniciar sesion</a>
+  </div>
+</div>
+
+<div class="modal fade" id="registerModal" tabindex="-1">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Registro de usuario</h5>
+      </div>
+      <div class="modal-body">
+        {{registerResult}}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="closeRegisterModal()">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>

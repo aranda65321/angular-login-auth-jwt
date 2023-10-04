@@ -3,7 +3,15 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  backendUrl: "http://localhost:8081/test-carvajal/api/v1",
+  loginPath: "/authentication/login",
+  logoutPath: "/authentication/logout",
+  validTokenPath: "/authentication/validToken",
+  createUserPath: "/authentication/register",
+  updateUserPath: "/user/update",
+  deleteUserPath: "/user/create",
+  authenticationToken: "AUTHENTICATION_TOKE"
 };
 
 /*
